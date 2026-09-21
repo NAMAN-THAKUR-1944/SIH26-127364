@@ -1,4 +1,4 @@
-
+<img width="1352" height="312" alt="image" src="https://github.com/user-attachments/assets/59da94bf-c9e7-4943-801f-ef21d5a371d6" />
 # VIGHNAX
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -8,14 +8,14 @@
 
 **VIGHNAX's Bhavi?yAdvakta** is an advanced AI-based Network Attack Forecaster using state-of-the-art Temporal World Models. It learns the "physics" of network behavior to forecast multi-step attack infiltrations (Zero-Day threats) entirely offline without external API dependencies.
 
-## ?? Key Features
+## --> Key Features
 
 * **Cyber World Model (Temporal Forecasting):** Predicts the next $K$ steps of adversary behavior using a PyTorch sequence autoencoder, allowing early interception of lateral movement before impact.
 * **Zero-Day Feature Explanations:** Uses pure PyTorch `Input-X-Gradient` attribution to identify exactly which packet features (e.g., `byte_count`, `flag_ack`) are driving the anomalous forecast.
 * **Threat Intel Enrichment:** Automatically parses unstructured threat clusters into structured MITRE ATT&CK codes (e.g., `T1071`) and CAPEC matrices.
 * **Live Telemetry Dashboard:** A glassmorphic, hyper-responsive Flask web dashboard for real-time visualization of infiltration probabilities and baseline comparisons.
 
-## ??? Architecture
+## --> Architecture
 
 ```mermaid
 graph TD
@@ -28,7 +28,7 @@ graph TD
     F --> G
 ```
 
-## ?? Setup Guide
+## --> Setup Guide
 
 ### 1. Requirements
 Ensure you have Python 3.10+ installed on your system.
@@ -54,7 +54,7 @@ To run full-scale mathematical convergence verification and train the models on 
 python train_enterprise.py
 ```
 
-## ?? Repository Structure
+## --> Repository Structure
 
 * `data/` - Contains mock CSV extracts for immediate local testing without 100GB datasets.
 * `src/` - The core AI engine.

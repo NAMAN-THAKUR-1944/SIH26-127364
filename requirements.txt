@@ -1,0 +1,8 @@
+torch
+scapy
+pandas
+scikit-learn
+shap
+streamlit
+flask
+flask-cors

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIGHNAX's Bhavi?yAdvakta | AI Network Attack Forecaster</title>
+    <!-- Rounded Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='chart.js') }}"></script>
+</head>
+<body>
+    
+    <header class="main-header">
+        <h1>VIGHNAX's Bhavi&#7779;yAdvakt&#257;</h1>
+        <p>AI based Network Attack Forecaster Using Network Traffic Data</p>
+    </header>
+
+    <nav class="glass-nav">
+        <div class="nav-controls">
+            <div class="custom-select-wrapper">
+                <select id="dataset-selector" class="glass-select">
+                    <option value="ctu13">CTU-13 (Botnet)</option>
+                    <option value="cicids">CIC-IDS2017/2018</option>
+                    <option value="unswnb15">UNSW-NB15</option>
+                    <option value="ciciot">CICIoT2023</option>
+                    <option value="lanl">LANL Authentication</option>
+                    <option value="darpa">DARPA Intrusion</option>
+                </select>
+            </div>
+            
+            <label class="glass-btn upload-btn">
+                <input type="file" id="dataset-upload" style="display: none;" accept=".csv,.pcap">
+                <span>Upload Raw Dataset</span>
+            </label>
+        </div>
+        
+        <div class="active-dataset-display">
+            Active: <strong id="active-dataset-text">CTU-13 (Botnet)</strong>
+        </div>
+    </nav>
+
+    <div class="grid-metrics">
+        <div class="glass-panel metric-box">
+            <div class="metric-label">F1 Score</div>
+            <div class="metric-value" id="val-f1">--</div>
+            <div class="metric-baseline">LR Baseline: <span id="top-base-f1">--</span></div>
+        </div>
+        <div class="glass-panel metric-box">
+            <div class="metric-label">Precision</div>
+            <div class="metric-value" id="val-precision">--</div>
+            <div class="metric-baseline">LR Baseline: <span id="top-base-precision">--</span></div>
+        </div>
+        <div class="glass-panel metric-box">
+            <div class="metric-label">Recall</div>
+            <div class="metric-value" id="val-recall">--</div>
+            <div class="metric-baseline">LR Baseline: <span id="top-base-recall">--</span></div>
+        </div>
+        <div class="glass-panel metric-box">
+            <div class="metric-label">False Positive Rate</div>
+            <div class="metric-value" id="val-fpr">--</div>
+            <div class="metric-baseline">LR Baseline: <span id="top-base-fpr">--</span></div>
+        </div>
+    </div>
+
+    <!-- Restructured to 2x2 Grid to guarantee matching heights -->
+    <div class="grid-main">
+        
+        <!-- ROW 1, COL 1 -->
+        <div class="glass-panel" style="margin-bottom: 0;">
+            <h2 class="panel-title">Temporal Infiltration Probability & K-Step Prediction</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Live streaming probability of active infiltration, and predictive forecasting for the next K temporal steps.
+            </p>
+            <div class="chart-container">
+                <canvas id="timelineChart"></canvas>
+            </div>
+        </div>
+
+        <!-- ROW 1, COL 2 -->
+        <div class="glass-panel" style="margin-bottom: 0; display: flex; flex-direction: column;">
+            <h2 class="panel-title">MITRE ATT&CK Stage Mapping</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Maps current anomalous sequences to standard adversary tactics and techniques.
+            </p>
+            <div id="mitre-box" class="mitre-alert" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                <h3 id="mitre-status">Scanning...</h3>
+                <div id="mitre-stages-list" style="margin-top: 0.5rem;">
+                    <p id="mitre-desc">Analyzing temporal sequences for threat signatures.</p>
+                </div>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 1rem;" id="flows-processed">Flows Processed: --</p>
+        </div>
+
+        <!-- ROW 2, COL 1 -->
+        <div class="glass-panel" style="margin-bottom: 0;">
+            <h2 class="panel-title">Zero-Day Feature Explanations (Input-X-Gradient)</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                Integrated Gradients attribution of the forecast back to the traffic. Bars to the right pushed prediction towards compromise.
+            </p>
+            <div class="radar-container" style="display: flex; flex-direction: column; gap: 2rem; align-items: stretch;">
+                <div class="chart-container" style="height: 220px;">
+                    <canvas id="radarChart"></canvas>
+                </div>
+                <div class="chart-container" style="height: 220px;">
+                    <canvas id="waterfallChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 2, COL 2 -->
+        <div class="glass-panel" style="margin-bottom: 0; display: flex; flex-direction: column;">
+            <h2 class="panel-title">Baseline Comparison (Logistic Regression)</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+                The World Model learns temporal physics, outperforming stateless baselines on zero-day attacks.
+            </p>
+            <div class="chart-container" style="flex: 1; min-height: 200px;">
+                <canvas id="baselineChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}?v=1.1"></script>
+</body>
+</html>

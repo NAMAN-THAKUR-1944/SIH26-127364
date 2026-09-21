@@ -1,0 +1,5 @@
+Task: 1.4 of the SIH World Model Cyber Defense Prototype.
+As the primary implementation agent, please:
+Create a robust Python module `src/data/telemetry_aligner.py`. It should contain a function/class to align the PCAP features (from `src/data/pcap_parser.py`) and Flow CSV features (from `src/data/flow_parser.py`) based on the 5-tuple and strict chronological timestamp boundaries. PCAP timestamps dictate the alignment boundaries, and flow statistics overlapping those boundaries should be interpolated or aggregated.
+Ensure the code is modular, well-commented, and includes basic error handling.
+IMPORTANT: Do NOT attempt to use the Write tool or write to disk. You do not have write permissions in this sandbox. Simply PRINT the entire complete Python code for `src/data/telemetry_aligner.py` inside a markdown code block so I can save it for you.

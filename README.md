@@ -1,4 +1,3 @@
-<img width="1352" height="312" alt="image" src="https://github.com/user-attachments/assets/59da94bf-c9e7-4943-801f-ef21d5a371d6" />
 # VIGHNAX
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
